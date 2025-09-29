@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ModelStudent.Models.Student>
+
+@{
+    ViewData["Title"] = "Danh sách sinh viên";
+}
+
+<h2>Danh sách sinh viên</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Thêm sinh viên mới</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Mã SV</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Ngành</th>
+            <th>Giới tính</th>
+            <th>Chính quy</th>
+            <th>Địa chỉ</th>
+            <th>Ngày sinh</th>
+            <th>Điểm</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Email</td>
+                <td>@s.Branch</td>
+                <td>@s.Gender</td>
+                <td>
+                    @(s.IsRegular ? "Có" : "Không")
+                </td>
+                <td>@s.Address</td>
+                <td>@s.DateOfBorth.ToString("dd/MM/yyyy")</td>
+                <td>@s.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>
